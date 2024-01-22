@@ -4,6 +4,7 @@ import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import bcrypt from 'bcrypt';
+import prisma from '@/libs/prismadb';
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma), //Prisma를 사용하여 데이터 관리

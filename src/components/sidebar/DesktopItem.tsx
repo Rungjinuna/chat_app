@@ -16,6 +16,8 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
   active,
   onClick,
 }) => {
+  // 항목이 클릭될때 호출되는 handleClick함수를 포함.
+  //onClick함수가 제공되면 해당함수를 실행함
   const handleClick = () => {
     if (onClick) {
       return onClick();
@@ -26,6 +28,7 @@ const DesktopItem: React.FC<DesktopItemProps> = ({
     <li onClick={handleClick} key={label}>
       <Link
         href={href}
+        // active 상태에 따라 조건부 스타일링
         className={clsx(
           `
             group 

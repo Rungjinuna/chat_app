@@ -8,7 +8,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
 import toast from 'react-hot-toast';
 import { signIn, useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 
 type Variant = 'LOGIN' | 'REGISTER';
@@ -130,7 +130,7 @@ const AuthForm = () => {
   };
 
   return (
-    <div className='mt-8 sm:max-auto sm:w-full sm:rounded-lg sm:px-10'>
+    <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
       <div className='px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10'>
         <form className='space-y-6' onSubmit={handleSubmit(onSubmit)}>
           {variant === 'REGISTER' && (
@@ -161,7 +161,6 @@ const AuthForm = () => {
             label='비밀번호'
             type='password'
           />
-
           <div>
             <Button disabled={isLoading} fullWidth type='submit'>
               {variant === 'LOGIN' ? '로그인' : '회원가입'}
@@ -171,11 +170,11 @@ const AuthForm = () => {
 
         <div className='mt-6'>
           <div className='relative'>
-            <div className='absolute inset-0 flex items-center'>
+            <div className='absolute inset-0 flex items-center '>
               <div className='w-full border-t border-gray-300' />
             </div>
             <div className='relative flex justify-center text-sm'>
-              <span className='px-2 text-gray-500 bg-white'>소셜로그인</span>
+              <span className='px-2 text-gray-500 bg-white'>소셜 로그인</span>
             </div>
           </div>
 
@@ -190,15 +189,14 @@ const AuthForm = () => {
             />
           </div>
         </div>
-        <div className='flex justify-center gap-2 px-2 mt-6 text-sm text-gray-500'>
+        <div className='flex justify-center gap-2 px-2 mt-6 text-sm text-gray-500 '>
           <div>
             {variant === 'LOGIN'
               ? '메신저를 처음 사용하시나요?'
               : '이미 계정이 있나요?'}
           </div>
-
           <div onClick={toggleVariant} className='underline cursor-pointer'>
-            {variant === 'LOGIN' ? '계정만들기' : '로그인하기'}
+            {variant === 'LOGIN' ? '계정 만들기' : '로그인하기'}
           </div>
         </div>
       </div>

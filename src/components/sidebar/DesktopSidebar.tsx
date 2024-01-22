@@ -24,7 +24,7 @@ const DesktopSidebar: React.FC<DesktopSidebarProps> = ({ currentUser }) => {
         isOpen={isOpen}
         onClose={() => setIsOpen}
       />
-      {/* lg: 접두사는 데스크톱 크기의 화면에만 적용되는 스타일임 */}
+      {/* lg: 접두사는 데스크톱 크기의 화면에만 적용되는 스타일 */}
       <div
         className='
         hidden 

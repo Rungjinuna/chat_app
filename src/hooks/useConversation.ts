@@ -15,9 +15,7 @@ const useConversation = () => {
 
   //대화창 열림 여부 확인
   //useMemo를 사용하여 conversationId 존재 여부에 따라 대화창이 열려있는지를 결정함
-  const isOpen = useMemo(() => {
-    !!conversationId;
-  }, [conversationId]);
+  const isOpen = useMemo(() => !!conversationId, [conversationId]);
 
   //isOpen과 conversationId를 포함하는 객체를 반환함
   return useMemo(

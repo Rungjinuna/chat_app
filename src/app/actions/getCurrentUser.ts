@@ -1,4 +1,4 @@
-import { getSession } from 'next-auth/react';
+import getSession from './getSession';
 import prisma from '@/libs/prismadb';
 
 const getCurrentUser = async () => {
@@ -24,4 +24,4 @@ const getCurrentUser = async () => {
   }
 };
 
-export default getCurrentUser();
+export default getCurrentUser;
