@@ -1,7 +1,7 @@
 'use client';
-import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
-import { IconType } from 'react-icons/lib';
+
 import clsx from 'clsx';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 
 interface InputProps {
   label: string;
@@ -19,14 +19,14 @@ const Input: React.FC<InputProps> = ({
   register,
   required,
   errors,
-  disabled,
   type = 'text',
+  disabled,
 }) => {
   return (
     <div>
       <label
         htmlFor={id}
-        className='block text-sm font-medium leading-6 text-gray-900'
+        className='block text-sm font-medium leading-6 text-gray-900 '
       >
         {label}
       </label>
