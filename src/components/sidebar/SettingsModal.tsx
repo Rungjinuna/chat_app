@@ -22,6 +22,7 @@ interface SettingsModalProps {
 const SettingsModal: React.FC<SettingsModalProps> = ({
   isOpen,
   onClose,
+  // User타입을 가지는 currentUser를 prop으로 받는데 초기값은 빈객체
   currentUser = {},
 }) => {
   const router = useRouter();
@@ -31,26 +32,33 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
     register,
     handleSubmit,
     setValue,
+    // watch는 useForm훅으로부터 가져옴
+    // 필드값 변화를 관찰하고 반환함
     watch,
     formState: { errors },
   } = useForm<FieldValues>({
+    // 폼의 초기값 설정
     defaultValues: {
       name: currentUser?.name,
       image: currentUser?.image,
     },
   });
-
+  // image라는 이름의 폼 필드의 현재값을 관찰하고 반환함
+  // image 변수에 현재 이미지 필드 값 저장
   const image = watch('image');
-
+  //업로드함수
+  //serValue함수를 호출하여 이미지 url 받아와서 유효성검사
   const handleUpload = (result: any) => {
     setValue('image', result.info.secure_url, {
       shouldValidate: true,
     });
   };
 
+  // onSubmit함수 호출시 setIsLoading상태는 true로 변경
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-
+    // axios이용해서 엔드포인트에 data post요청
+    // 요청후에 라우터 리프레시 하고 창닫기
     axios
       .post('/api/settings', data)
       .then(() => {
@@ -58,6 +66,7 @@ const SettingsModal: React.FC<SettingsModalProps> = ({
         onClose();
       })
       .catch(() => toast.error('Something went wrong!'))
+      // 요청 여부와 상관없이 로딩상태 false로 변경
       .finally(() => setIsLoading(false));
   };
 
