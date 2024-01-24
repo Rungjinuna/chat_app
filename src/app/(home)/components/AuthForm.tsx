@@ -1,15 +1,16 @@
 'use client';
 
-import Input from '../../../components/inputs/Input';
-import Button from '@/components/Button';
-import AuthSocialButton from './AuthSocialButton';
-import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
+import axios from 'axios';
+import { signIn, useSession } from 'next-auth/react';
 import { useCallback, useEffect, useState } from 'react';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
-import toast from 'react-hot-toast';
-import { signIn, useSession } from 'next-auth/react';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import axios from 'axios';
+
+import Input from '@/components/inputs/Input';
+import AuthSocialButton from './AuthSocialButton';
+import Button from '@/components/Button';
+import { toast } from 'react-hot-toast';
 
 type Variant = 'LOGIN' | 'REGISTER';
 
